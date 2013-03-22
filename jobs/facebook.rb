@@ -2,6 +2,11 @@
 require 'net/http'
 require 'json'
 
+# this job will track some metrics of a facebook page
+
+# Config
+# ------
+# the fb id or username of the page you’re planning to track
 facebook_graph_username = 'foobugs'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|

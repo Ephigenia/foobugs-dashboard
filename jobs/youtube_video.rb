@@ -2,7 +2,12 @@
 require 'net/http'
 require 'json'
 
-# configuration
+# This job can track some metrics of a single youtube video by accessing the
+# public available api of youtube.
+
+# Config
+# ------
+# The youtube video id. Get this from the `v` parameter of the video’s url
 youtube_video_id = 'cnc6yyxpdfg'
 
 SCHEDULER.every '1m', :first_in => 0 do |job|

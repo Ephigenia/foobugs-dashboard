@@ -2,8 +2,13 @@
 require 'net/http'
 require 'csv'
 
+# Track the Stock Value of a company by it’s stock quote shortcut using the 
+# official yahoo stock quote api
+
+# Config
+# ------
 # configuration
-yahoo_stockquote_symbol = 'WESC.ST'
+yahoo_stockquote_symbol = 'AAPL'
 
 SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("download.finance.yahoo.com")

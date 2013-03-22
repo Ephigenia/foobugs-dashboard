@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 require 'net/http'
 
+# Track public available information of a twitter user like follower, follower
+# and tweet count by scraping the user profile page.
+
+# Config
+# ------
 twitter_username = 'foobugs'
 
 SCHEDULER.every '5m', :first_in => 0 do |job|

@@ -2,9 +2,22 @@
 require 'net/http'
 require 'json'
 
+# This job can track metrics of a public visible user or organisation’s repos
+# by using the public api of github.
+# 
+# Note that this API only allows 60 requests per hour.
+# 
+# This Job should use the `List` widget
+
+# Config
+# ------
+# example for tracking single user repositories
 # github_username = 'users/ephigenia'
+# example for tracking an organisations repositories
 github_username = 'orgs/foobugs'
+# number of repositories to display in the list
 max_length = 5
+# order the list by the numbers
 ordered = true
 
 SCHEDULER.every '10m', :first_in => 0 do |job|

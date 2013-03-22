@@ -2,7 +2,13 @@
 require 'net/http'
 require 'json'
 
+# This job will track metrics of a github organisation or user
+
+# Config
+# ------
+# example for tracking single user repositories
 github_username = 'users/ephigenia'
+# example for tracking an organisations repositories
 # github_username = 'orgs/foobugs'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|

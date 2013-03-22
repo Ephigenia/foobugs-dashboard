@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 require 'net/http'
 
+# this job can track the total number of checkins and count of persons that
+# checked in in a foursquare venue without using the foursquare api.
+
+# Config
+# ------
+# the id of the venue you want to track, get it by navigating to the venue’s
+# detail page and paste the part of the url after the "/v/"
 foursquare_venue_id = 'foobugs/4e9834e1c2ee4857b0660e93'
 
 SCHEDULER.every '5m', :first_in => 0 do |job|
@@ -10,6 +17,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
   if response.code != "200"
     puts "foursquare communication error (status-code: #{response.code})\n#{response.body}"
   else
+    # get the numbers by regexp them out of the html source
     checkins_total = /Check-ins.+insgesamt.+statsnot6digits">([\d.,]+)/
       .match(response.body)[1].delete('.').to_i
     checkins_people = /Besucher.+statsnot6digits">([\d.,]+)/
