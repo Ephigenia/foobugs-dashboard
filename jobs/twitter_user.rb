@@ -15,11 +15,19 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
   if response.code != "200"
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
   else
-    print response.body
-    tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-    following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-    followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
 
+    statsRegexp = /statnum">([\d.,]+)asdasds/
+    matches = response.body.scan(statsRegexp)
+    if matches.length == 3
+      tweets = matches[0][0].delete('.').to_i
+      following = matches[1][0].delete('.').to_i
+      followers = matches[2][0].delete('.').to_i
+    else
+      tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+      following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+      followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+    end
+    
     send_event('twitter_user_tweets', current: tweets)
     send_event('twitter_user_followers', current: followers)
     send_event('twitter_user_following', current: following)
