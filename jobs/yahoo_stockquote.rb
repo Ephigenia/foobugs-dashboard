@@ -18,7 +18,7 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     puts "yahoo stock quote communication error (status-code: #{response.code})\n#{response.body}"
   else
     data = CSV.parse(response.body)
-    value = data[0][0]
+    value = data[0][0].to_f
     send_event('yahoo_stock_quote', current: value)
   end
 end
