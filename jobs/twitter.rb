@@ -2,7 +2,7 @@
 require 'net/http'
 require 'json'
 
-search_term = URI::encode('@foobugs OR foobugs OR @ephigenia')
+search_term = URI::encode('foobugs OR ephigenia')
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new('search.twitter.com')
