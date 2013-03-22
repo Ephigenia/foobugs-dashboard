@@ -1,7 +1,7 @@
+#!/usr/bin/env ruby
 require 'net/http'
 require 'json'
 
-# configuration
 facebook_graph_username = 'foobugs'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|

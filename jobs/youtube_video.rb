@@ -1,10 +1,11 @@
+#!/usr/bin/env ruby
 require 'net/http'
 require 'json'
 
 # configuration
-youtube_video_id = '91HTjK8TTJY'
+youtube_video_id = 'cnc6yyxpdfg'
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("gdata.youtube.com")
   response = http.request(Net::HTTP::Get.new("/feeds/api/videos?q=#{youtube_video_id}&v=2&alt=jsonc"))
   

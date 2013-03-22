@@ -1,10 +1,11 @@
+#!/usr/bin/env ruby
 require 'net/http'
 require 'csv'
 
 # configuration
 yahoo_stockquote_symbol = 'WESC.ST'
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("download.finance.yahoo.com")
   response = http.request(Net::HTTP::Get.new("/d/quotes.csv?fb=ab&s=#{yahoo_stockquote_symbol}"))
   

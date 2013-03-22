@@ -1,7 +1,8 @@
+#!/usr/bin/env ruby
 require 'net/http'
 require 'json'
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("tippjagd.de")
   response = http.request(Net::HTTP::Get.new("/api/1/json/stats"))
   if response.code != "200"

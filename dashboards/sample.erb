@@ -1,20 +1,34 @@
 <% content_for(:title) { "Foobugs dashboard" } %>
 <div class="gridster">
   <ul>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Tweets mentioning foobugs"></div>
+      <i class="icon-twitter icon-background"></i>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="twitter_user_followers" data-view="Number" data-title="Twitter Followers" style="background-color: #1d9fe3"></div>
+    </li>
+
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="facebook_likes" data-view="Number" data-title="Facebook Likes" style="background-color: #3b5998"></div>
     </li>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="facebook_checkins" data-view="Number" data-title="Facebook Checkins" style="background-color: #3b5998"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Tweets mentioning foobugs"></div>
-      <i class="icon-twitter icon-background"></i>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="foursquare_checkins_total" data-view="Number" data-title="Foursquare Checkins" style="background-color: #80c02d"></div>
     </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="github_user_repos_watchers" data-view="List" data-unordered="true" data-title="Github Repos" data-moreinfo="# of watchers"></div>
+    </li>
+
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="github_userinfo_followers" data-view="Number" data-title="GH Ephigenia Followers" style="background-color: #4183C5"></div>
     </li>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+
+    <!-- <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="tippjagd_active_users" data-view="Number" data-title="Tippjagd Active Users" style="background-color: #54a146"></div>
     </li>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
@@ -22,6 +36,6 @@
     </li>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="tippjagd_active_guesses" data-view="Number" data-title="Tippjagd Active Guesses" style="background-color: #54a146"></div>
-    </li>
+    </li> -->
   </ul>
 </div>

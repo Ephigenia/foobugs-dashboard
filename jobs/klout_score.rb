@@ -1,9 +1,10 @@
+#!/usr/bin/env ruby
 require 'net/http'
 
 # configuration
 twitter_username = 'foobugs'
 
-SCHEDULER.every '30m', :first_in => 0 do |job|
+SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new("widgets.klout.com")
   response = http.request(Net::HTTP::Get.new("/#{twitter_username}"))
   
@@ -16,4 +17,3 @@ SCHEDULER.every '30m', :first_in => 0 do |job|
     send_event('klout_score', current: score)
   end
 end
-
