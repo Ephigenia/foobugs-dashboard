@@ -2,7 +2,7 @@ This is a customized [dashing](http://shopify.github.com/dashing) dashbaord for 
 
 See this dashboard in action: [http://foobugs-dashboard.herokuapp.com](http://foobugs-dashboard.herokuapp.com)
 
-<img src="https://raw.github.com/foobugs/foobugs-dashboard/dashing_foobugs_screenshot.jpg" /></img>
+<img src="https://raw.github.com/foobugs/foobugs-dashboard/master/dashing_foobugs_screenshot.jpg" /></img>
 
 ## Widgets & Jobs
 
