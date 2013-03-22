@@ -16,7 +16,7 @@ require 'json'
 # example for tracking an organisations repositories
 github_username = 'orgs/foobugs'
 # number of repositories to display in the list
-max_length = 5
+max_length = 7
 # order the list by the numbers
 ordered = true
 

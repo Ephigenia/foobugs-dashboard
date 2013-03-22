@@ -8,7 +8,7 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new('search.twitter.com')
   response = http.request(Net::HTTP::Get.new("/search.json?q=#{search_term}"))
   if response.code != "200"
-    puts "twitter api error (status-code: #{response.code})\n#{response.body}"
+    puts "twitter search api error (status-code: #{response.code})\n#{response.body}"
   else 
     tweets = JSON.parse(response.body)["results"]
     if tweets
