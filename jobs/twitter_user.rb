@@ -8,7 +8,7 @@ require 'net/http'
 # ------
 twitter_username = 'foobugs'
 
-SCHEDULER.every '5m', :first_in => 0 do |job|
+# SCHEDULER.every '5m', :first_in => 0 do |job|
   http = Net::HTTP.new("twitter.com", Net::HTTP.https_default_port())
   http.use_ssl = true
   response = http.request(Net::HTTP::Get.new("/#{twitter_username}"))
@@ -18,7 +18,9 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
 
     statsRegexp = /statnum">([\d.,]+)/
     matches = response.body.scan(statsRegexp)
-    print matches
+
+    File.open("public/twitter_response.html", 'w') {|f| f.write(response.body) }
+
     if matches.length == 3
       tweets = matches[0][0].delete('.').to_i
       following = matches[1][0].delete('.').to_i
@@ -29,8 +31,8 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
       followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     end
 
-    send_event('twitter_user_tweets', current: tweets)
-    send_event('twitter_user_followers', current: followers)
-    send_event('twitter_user_following', current: following)
+    # send_event('twitter_user_tweets', current: tweets)
+    # send_event('twitter_user_followers', current: followers)
+    # send_event('twitter_user_following', current: following)
   end
-end
+# end
