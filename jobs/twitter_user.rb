@@ -19,15 +19,18 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     statsRegexp = /statnum">([\d.,]+)asdasds/
     matches = response.body.scan(statsRegexp)
     if matches.length == 3
+      print 'using other regexp'
+      print matches
       tweets = matches[0][0].delete('.').to_i
       following = matches[1][0].delete('.').to_i
       followers = matches[2][0].delete('.').to_i
     else
+      print 'using normal regexp'
       tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
       following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
       followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     end
-    
+
     send_event('twitter_user_tweets', current: tweets)
     send_event('twitter_user_followers', current: followers)
     send_event('twitter_user_following', current: following)
