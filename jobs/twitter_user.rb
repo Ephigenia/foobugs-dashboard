@@ -15,6 +15,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
   if response.code != "200"
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
   else
+    print response.body
     tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
