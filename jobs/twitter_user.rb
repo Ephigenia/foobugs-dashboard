@@ -18,6 +18,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
 
     statsRegexp = /statnum">([\d.,]+)/
     matches = response.body.scan(statsRegexp)
+    print matches
     if matches.length == 3
       tweets = matches[0][0].delete('.').to_i
       following = matches[1][0].delete('.').to_i
