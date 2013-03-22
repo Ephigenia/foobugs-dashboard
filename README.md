@@ -1,5 +1,7 @@
 This is a customized [dashing](http://shopify.github.com/dashing) dashbaord for [foobugs](http://www.foobugs.com) containing a list of widget jobs.
 
+See this dashboard in action: [http://foobugs-dashboard.herokuapp.com](http://foobugs-dashboard.herokuapp.com)
+
 ## Widgets & Jobs
 
 All of the widgets use public APIs or regexps on scraped website content. So no need fo complicated OAuth Authentification.
