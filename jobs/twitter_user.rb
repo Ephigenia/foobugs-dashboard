@@ -16,19 +16,9 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
   else
 
-    File.open("public/twitter_response.html", 'w') {|f| f.write(response.body) }
-
-    statsRegexp = /statnum">([\d.,]+)/
-    matches = response.body.scan(statsRegexp)
-    if matches.length == 3
-      tweets = matches[0][0].delete('.').to_i
-      following = matches[1][0].delete('.').to_i
-      followers = matches[2][0].delete('.').to_i
-    else
-      tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-      following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-      followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-    end
+    tweets = /profile">[\n\t\s]+<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+    following = /following">[\n\t\s]+<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+    followers = /followers">[\n\t\s]+<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
 
     send_event('twitter_user_tweets', current: tweets)
     send_event('twitter_user_followers', current: followers)
