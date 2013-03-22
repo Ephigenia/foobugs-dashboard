@@ -16,16 +16,13 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
   else
 
-    statsRegexp = /statnum">([\d.,]+)asdasds/
+    statsRegexp = /statnum">([\d.,]+)/
     matches = response.body.scan(statsRegexp)
     if matches.length == 3
-      print 'using other regexp'
-      print matches
       tweets = matches[0][0].delete('.').to_i
       following = matches[1][0].delete('.').to_i
       followers = matches[2][0].delete('.').to_i
     else
-      print 'using normal regexp'
       tweets = /profile'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
       following = /following'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
       followers = /followers'>\n<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
