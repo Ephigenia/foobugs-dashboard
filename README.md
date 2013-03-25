@@ -21,6 +21,16 @@ You also can copy single job files over to your own dashboard and use them there
 
 ## Demo & Screen
 
-See this dashboard in action: [http://foobugs-dashboard.herokuapp.com](http://foobugs-dashboard.herokuapp.com)
+There are two demo dashboards installed on heroku right now:
+
+### Default Dashboard
+
+[Standard Dashboard](http://foobugs-dashboard.herokuapp.com)
 
 <img src="https://raw.github.com/foobugs/foobugs-dashboard/master/dashing_foobugs_screenshot.jpg" /></img>
+
+### Stock Market Dashboard
+
+[Stock Market Example](http://foobugs-dashboard.herokuapp.com/stocks)
+
+<img src="https://raw.github.com/foobugs/foobugs-dashboard/master/dashing_foobugs_stocks_screenshot.jpg"></img>
