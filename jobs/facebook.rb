@@ -9,7 +9,7 @@ require 'json'
 # the fb id or username of the page you’re planning to track
 facebook_graph_username = 'foobugs'
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("graph.facebook.com")
   response = http.request(Net::HTTP::Get.new("/#{facebook_graph_username}"))
   if response.code != "200"

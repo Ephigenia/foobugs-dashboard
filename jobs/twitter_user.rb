@@ -8,7 +8,7 @@ require 'net/http'
 # ------
 twitter_username = 'foobugs'
 
-SCHEDULER.every '5m', :first_in => 0 do |job|
+SCHEDULER.every '2m', :first_in => 0 do |job|
   http = Net::HTTP.new("twitter.com", Net::HTTP.https_default_port())
   http.use_ssl = true
   response = http.request(Net::HTTP::Get.new("/#{twitter_username}"))

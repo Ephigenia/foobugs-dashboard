@@ -4,7 +4,7 @@ require 'json'
 
 search_term = URI::encode('@foobugs OR @ephigenia')
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '2m', :first_in => 0 do |job|
   http = Net::HTTP.new('search.twitter.com')
   response = http.request(Net::HTTP::Get.new("/search.json?q=#{search_term}"))
   if response.code != "200"

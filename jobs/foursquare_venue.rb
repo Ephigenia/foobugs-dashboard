@@ -10,7 +10,7 @@ require 'net/http'
 # detail page and paste the part of the url after the "/v/"
 foursquare_venue_id = 'foobugs/4e9834e1c2ee4857b0660e93'
 
-SCHEDULER.every '5m', :first_in => 0 do |job|
+SCHEDULER.every '30s', :first_in => 0 do |job|
   http = Net::HTTP.new("de.foursquare.com", Net::HTTP.https_default_port())
   http.use_ssl = true
   response = http.request(Net::HTTP::Get.new("/v/#{foursquare_venue_id}"))

@@ -11,7 +11,7 @@ github_username = 'users/ephigenia'
 # example for tracking an organisations repositories
 # github_username = 'orgs/foobugs'
 
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '3m', :first_in => 0 do |job|
   http = Net::HTTP.new("api.github.com", Net::HTTP.https_default_port())
   http.use_ssl = true
   response = http.request(Net::HTTP::Get.new("/#{github_username}"))
