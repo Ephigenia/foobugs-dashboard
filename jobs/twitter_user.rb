@@ -19,8 +19,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     tweets = /profile["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     following = /following["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
     followers = /followers["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-
-    print "#{tweets}\n"
+    
     send_event('twitter_user_tweets', current: tweets)
     send_event('twitter_user_followers', current: followers)
     send_event('twitter_user_following', current: following)
