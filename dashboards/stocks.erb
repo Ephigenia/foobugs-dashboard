@@ -1,0 +1,40 @@
+<% content_for(:title) { "Stocks Example" } %>
+<script type='text/javascript'>
+$(function() {
+  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
+  $(function() {
+  Dashing.gridsterLayout('[{"col":1,"row":1},{"col":1,"row":2},{"col":3,"row":1},{"col":3,"row":2},{"col":4,"row":2},{"col":4,"row":1},{"col":2,"row":1}]')
+  });
+  Dashing.widget_base_dimensions = [370, 340]
+  Dashing.numColumns = 4
+});
+</script>
+<div class="gridster">
+  <ul>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Clock"></div>
+      <i class="icon-time icon-background"></i>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-title="Technology Stocks" data-text="This is an example for a stock dashboard" data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yahoo_stock_quote_aapl" data-view="Number" data-title="Apple" style="background-color:#666666;"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yahoo_stock_quote_goog" data-view="Number" data-title="Google" style="background-color:#0432ef;"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yahoo_stock_quote_yhoo" data-view="Number" data-title="Yahoo" style="background-color:#660585;"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="yahoo_stock_quote_fb" data-view="Number" data-title="Facebook" style="background-color:#324d8f;"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
+      <div data-id="yahoo_stock_quote_list" data-view="List" data-unordered="true" data-title="Stocks" style="background-color: #0f516b" data-moreinfo="Value in USD"></div>
+    </li>
+
+  </ul>
+</div>
