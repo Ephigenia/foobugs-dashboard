@@ -1,0 +1,63 @@
+<% content_for(:title) { "Foobugs dashboard" } %>
+<script type='text/javascript'>
+$(function() {
+  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
+  Dashing.widget_base_dimensions = [470, 465]
+  Dashing.numColumns = 4
+});
+</script>
+<style>
+	.widget-number h1 {
+		font-size: 42px;
+	}
+	.widget-number h2 {
+		font-size: 160px;
+	}
+	.widget-comments h3 {
+		font-size: 42px;
+	}
+	.widget-comments p.comment {
+		font-size: 40px;
+	}
+	.updated-at {
+		font-size: 30px;
+	}
+	.widget-list h1 {
+		font-size: 42px;
+	}
+	.widget-list ul {
+		font-size: 28px;
+	}
+	.widget-clock h2 {
+		font-size: 100px;
+	}
+</style>
+<div class="gridster">
+  <ul>
+    
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Tweets mentioning foobugs"></div>
+      <i class="icon-twitter icon-background"></i>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="github_userinfo_followers" data-view="Number" data-title="GH Ephigenia Followers" style="background-color: #4183C5"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="github_user_repos_watchers" data-view="List" data-unordered="true" data-title="Github Repos" style="background-color: #4183C5"></div>
+    </li>
+    
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="foursquare_checkins_total" data-view="Number" data-title="Foursquare Checkins" style="background-color: #80c02d"></div>
+    </li>
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="facebook_likes" data-view="Number" data-title="Facebook Likes" style="background-color: #3b5998"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="twitter_user_followers" data-view="Number" data-title="Twitter Followers" style="background-color: #1d9fe3"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Clock"></div>
+      <i class="icon-time icon-background"></i>
+    </li>
+  </ul>
+</div>
