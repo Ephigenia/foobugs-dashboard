@@ -7,7 +7,7 @@ require 'net/http'
 # Config
 # ------
 # you’re username on klout (usually it’s your twitter handle)
-klout_username = 'foobugs'
+klout_username = ENV['KLOUT_USERNAME'] || 'foobugs'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new("widgets.klout.com")

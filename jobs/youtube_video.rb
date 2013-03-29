@@ -8,7 +8,7 @@ require 'json'
 # Config
 # ------
 # The youtube video id. Get this from the `v` parameter of the video’s url
-youtube_video_id = 'cnc6yyxpdfg'
+youtube_video_id = ENV['YOUTUBE_VIDEO_ID'] || 'cnc6yyxpdfg'
 
 SCHEDULER.every '1m', :first_in => 0 do |job|
   http = Net::HTTP.new("gdata.youtube.com")

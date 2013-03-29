@@ -8,7 +8,7 @@ require 'net/http'
 # ------
 # the id of the venue you want to track, get it by navigating to the venue’s
 # detail page and paste the part of the url after the "/v/"
-foursquare_venue_id = 'foobugs/4e9834e1c2ee4857b0660e93'
+foursquare_venue_id = ENV['FOURSQUARE_VENUE_ID'] || 'foobugs/4e9834e1c2ee4857b0660e93'
 
 SCHEDULER.every '30s', :first_in => 0 do |job|
   http = Net::HTTP.new("de.foursquare.com", Net::HTTP.https_default_port())

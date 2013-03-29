@@ -6,7 +6,7 @@ require 'net/http'
 
 # Config
 # ------
-twitter_username = 'foobugs'
+twitter_username = ENV['TWITTER_USERNAME'] || 'foobugs'
 
 SCHEDULER.every '2m', :first_in => 0 do |job|
   http = Net::HTTP.new("twitter.com", Net::HTTP.https_default_port())
