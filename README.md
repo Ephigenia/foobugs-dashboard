@@ -11,6 +11,7 @@ All of the widgets use public APIs or regexps on scraped website content. So no 
 * Klout Score
 * Twitter User Info like Followers, Following and Tweet Count
 * Vimeo User Info (Likes, Uploads, Contacts …)
+* Vimeo User Video TopList (Top-X of user’s videos)
 * Yahoo Stock Quote Value
 * Youtube Video Metrics (rating, views, likes, comments, favorites)
 
