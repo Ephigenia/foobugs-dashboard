@@ -19,6 +19,10 @@ All widgets can be displayed with the `Number` widget that is part of the dashin
 
 You also can copy single job files over to your own dashboard and use them there. Just place the according `.rb` file in your `jobs` directory.
 
+## What’s that for?
+
+Image you have some KPIs you always want to see when you’re in the office. You just use dashing and the jobs you need to display them permanently on a screen. We’ve installed a permanent dashboard display using a raspberry PI and a LCD screen. We’ll blog about this in 1-2 weeks.
+
 ## Demo & Screen
 
 There are two demo dashboards installed on heroku right now:
