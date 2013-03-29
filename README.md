@@ -10,6 +10,7 @@ All of the widgets use public APIs or regexps on scraped website content. So no 
 * GitHub UserInfo Metrics like followers, following, repos and gists
 * Klout Score
 * Twitter User Info like Followers, Following and Tweet Count
+* Vimeo User Info (Likes, Uploads, Contacts …)
 * Yahoo Stock Quote Value
 * Youtube Video Metrics (rating, views, likes, comments, favorites)
 
