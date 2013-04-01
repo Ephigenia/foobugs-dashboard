@@ -8,6 +8,7 @@ All of the widgets use public APIs or regexps on scraped website content. So no 
 * Foursquare Venue Metrics Checkins
 * GitHub Repository Stats (Forks and Watchers)
 * GitHub UserInfo Metrics like followers, following, repos and gists
+* Google Play Store Application Score / Comments Count
 * Klout Score
 * Twitter User Info like Followers, Following and Tweet Count
 * Yahoo Stock Quote Value
