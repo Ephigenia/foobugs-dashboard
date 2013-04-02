@@ -11,6 +11,7 @@ All of the widgets use public APIs or regexps on scraped website content. So no 
 * Google Play Store Application Score / Comments Count
 * Instagram User Info (Photos, Followers, Following)
 * Klout Score
+* Slideshare User Account Info (Slidecount, Followers)
 * Twitter User Info like Followers, Following and Tweet Count
 * Yahoo Stock Quote Value
 * Youtube Video Metrics (rating, views, likes, comments, favorites)
