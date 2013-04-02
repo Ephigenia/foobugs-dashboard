@@ -16,7 +16,7 @@ require 'net/http'
 # instagram user name
 instagram_username = ENV['INSTAGRAM_USERNAME'] || 'nike'
 
-# SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '10m', :first_in => 0 do |job|
   http = Net::HTTP.new("instagram.com")
   response = http.request(Net::HTTP::Get.new("/#{instagram_username}"))
   
@@ -30,27 +30,27 @@ instagram_username = ENV['INSTAGRAM_USERNAME'] || 'nike'
     userInfo = [
       {
         label: 'Followers',
-        value: match[2]
+        value: match[2].to_i
       },
       {
         label: 'Following',
-        value: match[3]
+        value: match[3].to_i
       },
       {
         label: 'Photos',
-        value: match[1]
+        value: match[1].to_i
       }
     ]
     # send the list
-    print userInfo
-    # send_event('instagram_userinfo', {items: userinfo})
+    # print userInfo
+    send_event('instagram_userinfo', {items: userInfo})
 
     # send every list item as a single event
     userInfo.each do |element|
       varname = "instagram_user_" + element[:label].downcase
-      print "#{varname}: #{element[:value]}\n"
-      # send_event(varname, element[:value])
+      # print "#{varname}: #{element[:value]}\n"
+      send_event(varname, current: element[:value])
     end
 
   end
-# end
+end
