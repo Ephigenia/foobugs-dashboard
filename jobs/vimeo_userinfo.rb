@@ -5,15 +5,15 @@ require 'json'
 # Job capturing user info from vimeo
 # 
 # This job will use the vimeo api to get informations about a vimeo user. 
-# The captured info are either send as a list with labels and values which
-# can be used in the "List" widget or single values `vimeo_userinfo_[varname]`
-# which can be displayed using the "Number" widget.
+# The captured info are either send as a list `viemo_userinfo_list` with labels
+# and values which can be used in the "List" widget or single values
+# `vimeo_userinfo_[varname]` which can be displayed using the "Number" widget.
 
 # Config
 # ------
-vimeo_username = 'ephigenia'
+vimeo_username = 'spread'
 
-SCHEDULER.every '1m', :first_in => 0 do |job|
+SCHEDULER.every '5m', :first_in => 0 do |job|
   http = Net::HTTP.new("vimeo.com")
   response = http.request(Net::HTTP::Get.new("/api/v2/#{vimeo_username}/info.json"))
   
@@ -47,14 +47,14 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     ]
 
     # send list
-    # print widgetData
+    # print items
     send_event('vimeo_userinfo_list', { items: items })
 
     # send single values (for Number widget)
     items.each do |item|
-      varname = item[:label].downcase
-      # print "vimeo_userinfo_#{varname}: #{item[:value]}\n"
-      send_event("vimeo_userinfo_#{varname}", item[:value])
+      varname = "vimeo_userinfo_" + item[:label].downcase
+      # print "#{varname}: #{item[:value]}\n"
+      send_event(varname, current: item[:value])
     end
     
   end

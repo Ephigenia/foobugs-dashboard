@@ -16,13 +16,13 @@ require 'json'
 
 # Config
 # ------
-vimeo_username = 'ephigenia'
+vimeo_username = 'spread'
 # set the number of videos to display
 vimeo_max_length = 5
 # set to false if videos should not be ordered by value
 vimeo_ordered = true
 
-SCHEDULER.every '1m', :first_in => 0 do |job|
+SCHEDULER.every '5m', :first_in => 0 do |job|
   http = Net::HTTP.new("vimeo.com")
   response = http.request(Net::HTTP::Get.new("/api/v2/#{vimeo_username}/videos.json"))
   
@@ -39,8 +39,8 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     # generate lists
     videosData.each do |video|
       title = video['title']
-      if title.length > 20
-        title = title[0..18] + ".."
+      if title.length > 12
+        title = title[0..10] + ".."
       end
       videos_likes.push({
         label: title,
