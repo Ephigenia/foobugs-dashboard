@@ -4,19 +4,19 @@ This is a customized [dashing](http://shopify.github.com/dashing) dashboard for 
 
 All of the widgets use public APIs or regexps on scraped website content. So no need fo complicated OAuth Authentification.
 
-* Facebook (Page) Metrics like Likes, Checkins or Talking About Numbers
-* Foursquare Venue Metrics Checkins
-* GitHub Repository Stats (Forks and Watchers)
-* GitHub UserInfo Metrics like followers, following, repos and gists
-* Google Play Store Application Score / Comments Count
-* Instagram User Info (Photos, Followers, Following)
-* Klout Score
-* Slideshare User Account Info (Slidecount, Followers)
-* Twitter User Info like Followers, Following and Tweet Count
-* Vimeo User Info (Likes, Uploads, Contacts …)
-* Vimeo User Video TopList (Top-X of user’s videos)
-* Yahoo Stock Quote Value
-* Youtube Video Metrics (rating, views, likes, comments, favorites)
+* Facebook-page metrics (likes, checkins or talking about)
+* Foursquare venue checkins
+* GitHub repository stats (forks and watchers)
+* GitHub user metrics (followers, following, repos and gists)
+* Google play store (application score and comments count)
+* Instagram user (photos, followers, following)
+* Klout score
+* Slideshare user (count of slides, followers)
+* Twitter account (followers, following and tweets)
+* Vimeo account (likes, uploads, contacts etc.)
+* Vimeo account vidoes top-list (top-X of user’s videos)
+* Yahoo stock market quote value
+* Youtube video metrics (rating, views, likes, comments, favorites)
 
 ## Using Widgets
 
