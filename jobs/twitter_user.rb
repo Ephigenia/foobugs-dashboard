@@ -16,9 +16,9 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
   else
 
-    tweets = /profile["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-    following = /following["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
-    followers = /followers["']>[\n\t\s]*<strong>([\d.]+)/.match(response.body)[1].delete('.').to_i
+    tweets = /profile["']>[\n\t\s]*<strong>([\d.,]+)/.match(response.body)[1].delete('.,').to_i
+    following = /following["']>[\n\t\s]*<strong>([\d.,]+)/.match(response.body)[1].delete('.,').to_i
+    followers = /followers["']>[\n\t\s]*<strong>([\d.,]+)/.match(response.body)[1].delete('.,').to_i
     
     send_event('twitter_user_tweets', current: tweets)
     send_event('twitter_user_followers', current: followers)
