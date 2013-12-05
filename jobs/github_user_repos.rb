@@ -23,7 +23,7 @@ ordered = true
 SCHEDULER.every '3m', :first_in => 0 do |job|
   http = Net::HTTP.new("api.github.com", Net::HTTP.https_default_port())
   http.use_ssl = true
-  response = http.request(Net::HTTP::Get.new("/#{github_username}/repos"))
+  response = http.request(Net::HTTP::Get.new("/users/#{github_username}/repos"))
   data = JSON.parse(response.body)
 
   if response.code != "200"
