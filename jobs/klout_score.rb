@@ -16,9 +16,13 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
   if response.code != "200"
     puts "klout communication error (status-code: #{response.code})\n#{response.body}"
   else
-    regex = /class="kscore\s*" title="(\d+)"/
+    regex = /user-score-flag">\s*([\d]+)/
     result = regex.match(response.body)
     score = result[1]
-    send_event('klout_score', current: score)
+    if defined?(send_event)
+      send_event('klout_score', current: score)
+    else
+      printf "Klout Score: %d\n", score
+    end
   end
 end
