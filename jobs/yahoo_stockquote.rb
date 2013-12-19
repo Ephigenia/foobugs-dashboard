@@ -65,7 +65,7 @@ SCHEDULER.every '30s', :first_in => 0 do |job|
       if change != 0.0
         widgetData[:last] = current + change
       end
-      if defined?(job)
+      if defined?(send_event)
         send_event(widgetVarname, widgetData)
       else
         print "current: #{symbol} #{current} #{change} #{widgetVarname}\n"
@@ -73,7 +73,7 @@ SCHEDULER.every '30s', :first_in => 0 do |job|
     end
 
     # send list to dashboard
-    if defined?(job)
+    if defined?(send_event)
       send_event('yahoo_stock_quote_list', { items: stocklist })
     else
       print stocklist
