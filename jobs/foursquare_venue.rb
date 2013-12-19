@@ -20,7 +20,7 @@ SCHEDULER.every '30s', :first_in => 0 do |job|
     # get the numbers by regexp them out of the html source
     checkins_total = /Insgesamte Check-Ins.+venueStatCount.+data-count="([\d.,]+)/
       .match(response.body)[1].delete('.').to_i
-    checkins_people = /rightColumn.+Total Visitors.+venueStatCount.+data-count="([\d.,]+)">.+venueStatCount/
+    checkins_people = /rightColumn.+Besucher insgesamt.+venueStatCount.+data-count="([\d.,]+)">.+venueStatCount/
       .match(response.body)[1].delete('.').to_i
     send_event('foursquare_checkins_total', current: checkins_total)
     send_event('foursquare_checkins_people', current: checkins_people)
