@@ -12,7 +12,7 @@ twitter_username = ENV['TWITTER_USERNAME'] || 'foobugs'
 SCHEDULER.every '2m', :first_in => 0 do |job|
   http = Net::HTTP.new("twitter.com", Net::HTTP.https_default_port())
   http.use_ssl = true
-  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE # disable ssl certificate check
   response = http.request(Net::HTTP::Get.new("/#{twitter_username}"))
   if response.code != "200"
     puts "twitter communication error (status-code: #{response.code})\n#{response.body}"
