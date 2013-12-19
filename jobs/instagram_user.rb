@@ -42,14 +42,20 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
       }
     ]
     # send the list
-    # print userInfo
-    send_event('instagram_userinfo', {items: userInfo})
+    if defined?(send_event)
+      send_event('instagram_userinfo', {items: userInfo})
+    else
+      print userInfo
+    end
 
     # send every list item as a single event
     userInfo.each do |element|
       varname = "instagram_user_" + element[:label].downcase
-      # print "#{varname}: #{element[:value]}\n"
-      send_event(varname, current: element[:value])
+      if defined?(send_event)
+        send_event(varname, current: element[:value])
+      else
+        print "#{varname}: #{element[:value]}\n"
+      end
     end
 
   end
