@@ -47,14 +47,20 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     ]
 
     # send list
-    # print items
-    send_event('vimeo_userinfo_list', { items: items })
-
+    if defined?(send_evnt)
+      send_event('vimeo_userinfo_list', { items: items })
+    else
+      print items
+    end
+    
     # send single values (for Number widget)
     items.each do |item|
       varname = "vimeo_userinfo_" + item[:label].downcase
-      # print "#{varname}: #{item[:value]}\n"
-      send_event(varname, current: item[:value])
+      if defined?(send_event)
+        send_event(varname, current: item[:value])
+      else
+        print "#{varname}: #{item[:value]}\n"
+      end
     end
     
   end
