@@ -1,21 +1,28 @@
-#!/usr/bin/env ruby
-require 'net/http'
-require 'json'
+require 'twitter'
 
-search_term = URI::encode('@foobugs OR @ephigenia')
 
-SCHEDULER.every '2m', :first_in => 0 do |job|
-  http = Net::HTTP.new('search.twitter.com')
-  response = http.request(Net::HTTP::Get.new("/search.json?q=#{search_term}"))
-  if response.code != "200"
-    puts "twitter search api error (status-code: #{response.code})\n#{response.body}"
-  else 
-    tweets = JSON.parse(response.body)["results"]
+#### Get your twitter keys & secrets:
+#### https://dev.twitter.com/docs/auth/tokens-devtwittercom
+Twitter.configure do |config|
+  config.consumer_key = 'YOUR_CONSUMER_KEY'
+  config.consumer_secret = 'YOUR_CONSUMER_SECRET'
+  config.oauth_token = 'YOUR_OAUTH_TOKEN'
+  config.oauth_token_secret = 'YOUR_OAUTH_SECRET'
+end
+
+search_term = URI::encode('#todayilearned')
+
+SCHEDULER.every '10m', :first_in => 0 do |job|
+  begin
+    tweets = Twitter.search("#{search_term}").results
+
     if tweets
-      tweets.map! do |tweet| 
-        { name: tweet['from_user'], body: tweet['text'], avatar: tweet['profile_image_url_https'] }
+      tweets.map! do |tweet|
+        { name: tweet.user.name, body: tweet.text, avatar: tweet.user.profile_image_url_https }
       end
       send_event('twitter_mentions', comments: tweets)
     end
+  rescue Twitter::Error
+    puts "\e[33mFor the twitter widget to work, you need to put in your twitter API keys in the jobs/twitter.rb file.\e[0m"
   end
 end
