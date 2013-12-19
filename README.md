@@ -2,7 +2,7 @@ This is a customized [dashing](http://shopify.github.com/dashing) dashboard for 
 
 ## Widgets & Jobs
 
-All of the widgets use public APIs or regexps on scraped website content. So no need fo complicated OAuth Authentification.
+All of the widgets use public APIs or regexps on scraped website content. So no need fo complicated OAuth Authentification. In most cases a user id or username is the only thing you need to get the data.
 
 * Facebook-page metrics (likes, checkins or talking about)
 * Foursquare venue checkins
