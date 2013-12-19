@@ -23,13 +23,19 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
     # capture slideshare user followers count using regexp on the source
     slideshare_user_followers_count = /(\d+) Follower/.match(response.body)
     slideshare_user_followers_count = slideshare_user_followers_count[1].to_i
-    # print "slideshare followers: #{slideshare_user_followers_count}\n"
-    send_event('slideshare_user_followers_count', current: slideshare_user_followers_count)
-    
+    if defined?(send_event)
+      send_event('slideshare_user_followers_count', current: slideshare_user_followers_count)
+    else
+      print "slideshare followers: #{slideshare_user_followers_count}\n"
+    end
+
     # capture slideshare slides count using regexp on the source
     slideshare_user_slides_count = /(\d+) SlideShares/.match(response.body)
     slideshare_user_slides_count = slideshare_user_slides_count[1].to_i
-    # print "slideshare followers: #{slideshare_user_slides_count}\n"
-    send_event('slideshare_user_slides_count', current: slideshare_user_slides_count)
+    if defined?(send_event)
+      send_event('slideshare_user_slides_count', current: slideshare_user_slides_count)
+    else
+      print "slideshare followers: #{slideshare_user_slides_count}\n"
+    end
   end
 end
