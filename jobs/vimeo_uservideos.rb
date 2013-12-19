@@ -72,10 +72,14 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
       videos_sums = videos_sums.sort_by { |obj| -obj[:value] }
     end
 
-    send_event('vimeo_uservideos_likes', { items: videos_likes.slice(0, vimeo_max_length) })
-    send_event('vimeo_uservideos_plays', { items: videos_plays.slice(0, vimeo_max_length) })
-    send_event('vimeo_uservideos_comments', { items: videos_comments.slice(0, vimeo_max_length) })
-    send_event('vimeo_uservideos_sums', { items: videos_sums.slice(0, vimeo_max_length) })
+    if defined?(send_event)
+      send_event('vimeo_uservideos_likes', { items: videos_likes.slice(0, vimeo_max_length) })
+      send_event('vimeo_uservideos_plays', { items: videos_plays.slice(0, vimeo_max_length) })
+      send_event('vimeo_uservideos_comments', { items: videos_comments.slice(0, vimeo_max_length) })
+      send_event('vimeo_uservideos_sums', { items: videos_sums.slice(0, vimeo_max_length) })
+    else
+      print videos_likes, videos_plays, videos_comments, videos_sums
+    end
     
   end
 end
