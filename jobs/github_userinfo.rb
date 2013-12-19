@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'net/http'
+require 'openssl'
 require 'json'
 
 # This job will track metrics of a github organisation or user
@@ -14,6 +15,7 @@ github_username = ENV['GITHUB_USERINFO_USERNAME'] || 'users/ephigenia'
 SCHEDULER.every '3m', :first_in => 0 do |job|
   http = Net::HTTP.new("api.github.com", Net::HTTP.https_default_port())
   http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE # disable ssl certificate check
   response = http.request(Net::HTTP::Get.new("/#{github_username}"))
   data = JSON.parse(response.body)
 
