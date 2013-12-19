@@ -25,7 +25,11 @@ SCHEDULER.every '30s', :first_in => 0 do |job|
       .match(response.body)[1].delete('.').to_i
     checkins_people = /rightColumn.+Besucher insgesamt.+venueStatCount.+data-count="([\d.,]+)">.+venueStatCount/
       .match(response.body)[1].delete('.').to_i
-    send_event('foursquare_checkins_total', current: checkins_total)
-    send_event('foursquare_checkins_people', current: checkins_people)
+    if defined?(send_event)
+      send_event('foursquare_checkins_total', current: checkins_total)
+      send_event('foursquare_checkins_people', current: checkins_people)
+    else
+      printf "Foursquare venue checkins: %d by %d people", checkins_total, checkins_people
+    end
   end
 end
