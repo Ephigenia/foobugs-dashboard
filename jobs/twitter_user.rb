@@ -19,7 +19,7 @@ SCHEDULER.every '2m', :first_in => 0 do |job|
   else
 
     tweets = /tweet_stats\".+<strong>([\d.]+)<\/strong>/.match(response.body)[1].delete('.,').to_i
-    following = /<strong>([\d.]+)<\/strong> folgt/.match(response.body)[1].delete('.,').to_i
+    following = /<strong>([\d.]+)<\/strong> Following/.match(response.body)[1].delete('.,').to_i
     followers = /<strong>([\d.]+)<\/strong> Follower/.match(response.body)[1].delete('.,').to_i
 
     send_event('twitter_user_tweets', current: tweets)
