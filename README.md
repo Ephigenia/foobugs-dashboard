@@ -4,19 +4,19 @@ This is a customized [dashing](http://shopify.github.com/dashing) dashboard for 
 
 All of the widgets use public APIs or regexps on scraped website content. So no need fo complicated OAuth Authentification. In most cases a user id or username is the only thing you need to get the data.
 
-* Facebook-page metrics (likes, checkins or talking about)
-* Foursquare venue checkins
-* GitHub repository stats (forks and watchers)
-* GitHub user metrics (followers, following, repos and gists)
-* Google play store (application score and comments count)
-* Instagram user (photos, followers, following)
-* Klout score
-* Slideshare user (count of slides, followers)
-* Twitter account (followers, following and tweets)
-* Vimeo account (likes, uploads, contacts etc.)
-* Vimeo account vidoes top-list (top-X of user’s videos)
-* Yahoo stock market quote value
-* Youtube video metrics (rating, views, likes, comments, favorites)
+* [Facebook](http://www.facebook.de)-page metrics (likes, checkins or talking about)
+* [Foursquare](https://foursquare.com) venue checkins
+* [GitHub](https://github.com/) repository stats (forks and watchers)
+* [GitHub](https://github.com/) user metrics (followers, following, repos and gists)
+* [Google play store](https://play.google.com/store) (application score and comments count)
+* [Instagram](http://instagram.com/) user (photos, followers, following)
+* [Klout](http://klout.com/) score
+* [Slideshare](http://www.slideshare.net/) user (count of slides, followers)
+* [Twitter](https://twitter.com/) account (followers, following and tweets)
+* [Vimeo](https://vimeo.com/) account (likes, uploads, contacts etc.)
+* [Vimeo](https://vimeo.com/) account vidoes top-list (top-X of user’s videos)
+* [Yahoo stock](http://de.finance.yahoo.com/) market quote value
+* [Youtube](http://www.youtube.com) video metrics (rating, views, likes, comments, favorites)
 
 ## Using Widgets
 
