@@ -3,11 +3,11 @@ require 'net/http'
 require 'openssl'
 
 # Average+Average Voting on an Android App
-# 
+#
 # This job will track the average vote score and number of votes on an app
 # that is registered in the google play market by scraping the google play
 # market website.
-# 
+#
 # There are two variables send to the dashboard:
 # `google_play_voters_total` containing the number of people voted
 # `google_play_average_rating` float value with the average votes
@@ -17,8 +17,8 @@ require 'openssl'
 appId = ENV['GOOGLE_PLAY_ID'] || 'com.instagram.android'
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
-  
-  # prepare request  
+
+  # prepare request
   http = Net::HTTP.new("play.google.com", Net::HTTP.https_default_port())
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE # disable ssl certificate check
@@ -37,9 +37,9 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
       print "average-rating: #{average_rating}\n"
     end
 
-    # capture
-    voters_count = /class=[\"\']reviews-num[\"\']>([\d.]+)</.match(response.body)
-    voters_count = voters_count[1].gsub('.', '').to_i
+    # capture total number of votes
+    voters_count = /class=[\"\']reviews-num[\"\']>([\d,.]+)</.match(response.body)
+    voters_count = voters_count[1]
     if defined?(send_event)
       send_event('google_play_voters_total', current: voters_count)
     else
