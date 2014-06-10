@@ -1,3 +1,5 @@
+[![VersionEye Badge](https://www.versioneye.com/user/projects/5397235383add7a298000002/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5397235383add7a298000002 "Version Eye Dependencies")
+
 This is a customized [dashing](http://shopify.github.com/dashing) dashboard for [foobugs](http://www.foobugs.com) containing a set of new widget jobs that also can be used in a fresh dashing setup.
 
 ## Widgets & Jobs
