@@ -3,18 +3,18 @@ require 'twitter'
 
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
-Twitter.configure do |config|
+client = Twitter::REST::Client.new do |config|
   config.consumer_key = 'YOUR_CONSUMER_KEY'
   config.consumer_secret = 'YOUR_CONSUMER_SECRET'
-  config.oauth_token = 'YOUR_OAUTH_TOKEN'
-  config.oauth_token_secret = 'YOUR_OAUTH_SECRET'
+  config.access_token = 'YOUR_OAUTH_TOKEN'
+  config.access_token_secret = 'YOUR_OAUTH_SECRET'
 end
 
 search_term = URI::encode('#todayilearned')
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   begin
-    tweets = Twitter.search("#{search_term}").results
+    tweets = client.search("#{search_term}").results
 
     if tweets
       tweets.map! do |tweet|
