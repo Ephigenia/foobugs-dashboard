@@ -1,3 +1,7 @@
+# 2014-07-16
+
+* [bugfix] fix doc paths to values for `twitter_user` (closes #13)
+
 # 2014-04-03
 
 * Fixes regular expressions for `twitter_user` job for capturing followers, following and tweet count

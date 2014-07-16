@@ -11,9 +11,9 @@ twitter_username = ENV['TWITTER_USERNAME'] || 'foobugs'
 
 SCHEDULER.every '2m', :first_in => 0 do |job|
   doc = Nokogiri::HTML(open("https://twitter.com/#{twitter_username}"))
-  tweets = doc.css('a.js-nav[data-nav=profile] strong').first.attributes['title'].value
-  followers = doc.css('a.js-nav[data-nav=followers] strong').first.attributes['title'].value
-  following = doc.css('a.js-nav[data-nav=following] strong').first.attributes['title'].value
+  tweets = doc.css('a[data-nav=tweets]').first.attributes['title'].value.split(' ').first
+  followers = doc.css('a[data-nav=followers]').first.attributes['title'].value.split(' ').first
+  following = doc.css('a[data-nav=following]').first.attributes['title'].value.split(' ').first
 
   send_event('twitter_user_tweets', current: tweets)
   send_event('twitter_user_followers', current: followers)
